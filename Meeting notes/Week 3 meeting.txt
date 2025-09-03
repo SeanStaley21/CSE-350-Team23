@@ -1,0 +1,17 @@
+phone app for food truck menu ~~~~idea
+
+similar in concept to mcdonalds/chik flia ~~~~example
+
+menu will be stored in array list or some kind of format ~~~~~ storage of major data
+
+
+
+languages we know
+python, java, c++, c, c#
+
+
+things to get done for next meeting
+figure out what language
+
+important notes:
+no contact from  Robert Wickliffe & Dominick wheeler
