@@ -62,3 +62,23 @@ input[type="submit"] {
 input[type="submit"]:hover {
       background: var(--secondary-color);
     }
+
+input[type="text"] {
+  margin-bottom: 1em;
+}
+
+/* for mobile viewing */
+@media (max-width: 500px) {
+  form {
+    max-width: 95%;
+    padding: 1em;
+  }
+  header {
+    font-size: 1.1em;
+    padding: 0.7em;
+  }
+  nav a {
+    margin: 0 0.5em;
+    font-size: 1em;
+  }
+}
