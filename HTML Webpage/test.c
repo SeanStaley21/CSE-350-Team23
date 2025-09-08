@@ -40,7 +40,7 @@ int main(void) {
   const char *method = getenv("REQUEST_METHOD");
   if (!method || strcmp(method, "POST") != 0) {
     printf("Content-Type: text/html\r\n\r\n");
-    printf("<!doctype html><html><body><h1>Use POST</h1></body></html>");
+    printf("<html><body><h1>CGI script started</h1></body></html>");
     return 0;
   }
 
