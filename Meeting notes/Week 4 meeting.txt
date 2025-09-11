@@ -1,0 +1,18 @@
+~~~~ Week 4 ~~~~
+discussed the language we are using for back end which is cpp
+
+talked about how we will go about making our menu and sending in the options when they have been selected.
+
+discussed our power point and how the video presentation will be done.
+
+roles have been assigned:
+Jaden is backend
+Sean is frontend
+
+~~To do~~
+finish power point by Thursday
+record each ones slide and send to Sean for final edit and submission
+
+~~future~~
+figure out how to get communication from html webpage to backend code
+
