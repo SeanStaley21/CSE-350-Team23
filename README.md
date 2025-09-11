@@ -1,5 +1,5 @@
 # CSE-350-Team23
-#Food Truck Ordering
+Food Truck Ordering
 ##Simple web app that has a backend in cpp and frontend in html and css
 This application will be able to handle a form that is submitted on the html side and then list it on the opposing food trucks html side with the order listed
 
