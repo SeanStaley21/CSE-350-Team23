@@ -1,0 +1,52 @@
+slide 8
+
+website form submission
+- need to be able to submit something first is a crucial operation
+- adjusting the menu options so that they are all customizable
+
+submission handling in backend
+- the program needs to be able to take the data submitted and turn it into a ticket.
+- the ticket needs to be sent to the food truck side and a receipt is sent back to customer
+
+Live Order Queue\
+- this will be either webapp or program needs to be able to receive the ticket from the backend or wherever
+- display the ticket in an orderly fashion by time, so that the first/oldest ticket is at the front of the queue.
+- it should be able to allow the worker to mark ticket as complete, or delete orders
+
+Cart list
+- at the end of the web submission you should be able to view the cart and see all that is there before you place the order.
+- you should be able to remove items from the cart
+- there should be a revamp of the order submission where you add to kart rather than just one order at a time
+
+Order Confirmation
+- the receipt from the submission handling in backend part should be received and displayed on user submission
+- there should be a nice format for the receipt differently than the food trucks side of the receipt
+
+Slide 9
+
+- dev plan is agile/iterative
+- this is because different people will be working on different parts at one time
+- then we all put everything together after we finish our short stint of work to test and refine
+- then we will rinse and repeat through those steps.
+
+Slide 10
+- in our first sprint we will have a webapp ui created
+- the website will be able to submit the form
+- the backend should be able to receive the submission.
+- food truck ui will be created roughly
+
+- in sprint 2 which will be shorter.
+- we will have a live order queue made in the backend
+- food truck order queue ui will be update to receive and display the live orders
+- showing the  cart on the customer side should be put in as well as order/receipt confirmation
+
+- final sprint 3
+- we should be testing our features and debugging the issues
+- these will be more or less worked on simultaneous to the new features being added
+- after that we will be finished with the project
+
+Slide 11
+- Sean will be the project manager and frontend engineer
+- Jaden will be our backend and product engineer
+- Robert will be our full stack dev working with both sides
+- Connor has no role due to no participation
