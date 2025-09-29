@@ -1,0 +1,52 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Define the Burger class
+class Burger {
+private:
+    string name;
+    double price;
+    bool isVegetarian;
+
+public:
+    // Default constructor
+    Burger() {
+        name = "Unknown";
+        price = 0.0;
+        isVegetarian = false;
+    }
+
+    // Parameterized constructor
+    Burger(string n, double p, bool veg) {
+        name = n;
+        price = p;
+        isVegetarian = veg;
+    }
+
+    // Display burger info
+    void display() {
+        cout << "Name: " << name
+            << ", Price: $" << price
+            << ", Vegetarian: " << (isVegetarian ? "Yes" : "No") << endl;
+    }
+
+    // You can also add setters/getters if needed
+};
+
+int main() {
+    // Create an array of Burger objects
+    const int SIZE = 3;
+    Burger burgers[SIZE] = {
+        Burger("Classic Beef", 5.99, false),
+        Burger("Veggie Delight", 4.99, true),
+        Burger("Chicken Supreme", 6.49, false)
+    };
+
+    // Display all burgers
+    for (int i = 0; i < SIZE; i++) {
+        burgers[i].display();
+    }
+
+    return 0;
+}
