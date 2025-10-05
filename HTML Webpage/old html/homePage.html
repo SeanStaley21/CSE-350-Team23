@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Food Truck</title>
+  <link rel="stylesheet" href="default_style.css">
+  
+</head>
+<body>
+
+  <header>
+    Food Truck
+    <nav>
+      <a href="homePage.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <form action="/cgi-bin/test.cgi" method="POST">
+    <label for="food">Choose your meal:</label>
+    <select id="food" name="food">
+      <option value="" selected disabled>Please Choose One</option>
+      <option value="hot_dog">Hot Dog</option>
+      <option value="burger">Burger</option>
+      <!-- more food options -->
+    </select>
+
+    <label for="side">Choose your side:</label>
+    <select id="side" name="side">
+      <option value="" selected disabled>Please Choose One</option>
+      <option value="fries">Fries</option>
+      <option value="salad">Salad</option>
+      <option value="none">No Side</option>
+      <!-- more side options -->
+    </select>
+
+    <label for="drink">Choose your drink:</label>
+    <select id="drink" name="drink">
+      <option value="" selected disabled>Please Choose One</option>
+      <option value="soda">Soda</option>
+      <option value="water">Water</option>
+      <!-- more drink options -->
+    </select>
+
+    <label for="name">Your name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <input type="submit" value="Place Order">
+  </form>
+
+</body>
+</html>

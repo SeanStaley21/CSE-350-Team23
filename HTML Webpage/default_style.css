@@ -67,6 +67,47 @@ input[type="text"] {
   margin-bottom: 1em;
 }
 
+/* Popup modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 2em;
+  border-radius: 8px;
+  min-width: 300px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+  text-align: left;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content button {
+  margin-top: 1em;
+  padding: 0.5em 1em;
+  background: var(--primary-color);
+  color: var(--header-text-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background: var(--secondary-color);
+}
+
 /* for mobile viewing */
 @media (max-width: 500px) {
   form {

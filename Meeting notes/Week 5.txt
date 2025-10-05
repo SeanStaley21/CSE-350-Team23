@@ -1,0 +1,3 @@
+What we talked about:
+Discussed what our current project needs are and where we need to go to stay on track with our plan. The front end will redone with react, the endpoints will be worked on by Robert, and Jaden is going to layout the blueprints of the backend
+
