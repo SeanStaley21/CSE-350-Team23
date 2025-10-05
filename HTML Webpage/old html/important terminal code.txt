@@ -1,1 +1,0 @@
-runs a test server on the local machine ~~ python -m http.server 8000 --cgi
