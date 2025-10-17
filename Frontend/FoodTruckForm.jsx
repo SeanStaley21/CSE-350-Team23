@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './default_style.css';
+import './FoodTruckForm.css';
 
 function FoodTruckForm() {
   const [form, setForm] = useState({

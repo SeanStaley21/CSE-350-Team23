@@ -1,0 +1,125 @@
+:root {
+  --primary-color: #ff4141;
+  --secondary-color: #00ff15;
+  --background-color: #f8f8f8;
+  --text-color: #222;
+  --header-text-color: #fff;
+}
+
+body {
+  background: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Segoe UI', sans-serif;
+      background: #f8f8f8;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+}
+
+header {
+  background: var(--primary-color);
+  color: var(--header-text-color);
+  padding: 1em;
+  font-size: 1.5em;
+}
+nav {
+  margin-top: 0.5em;
+}
+nav a {
+  color: var(--header-text-color);
+  margin: 0 1em;
+  text-decoration: none;
+}
+form {
+    margin: 2em auto;
+      max-width: 400px;
+      background: white;
+      padding: 1.5em;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+label {
+    display: block;
+      margin: 1em 0 0.5em;
+      font-weight: bold;
+}
+
+select, input[type="submit"] {
+      width: 100%;
+      padding: 0.75em;
+      font-size: 1em;
+      margin-bottom: 1em;
+    }
+
+input[type="submit"] {
+      background: var(--primary-color);
+      color: var(--header-text-color);
+      border: none;
+      cursor: pointer;
+    }
+
+input[type="submit"]:hover {
+      background: var(--secondary-color);
+    }
+
+input[type="text"] {
+  margin-bottom: 1em;
+}
+
+/* Popup modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white; 
+  padding: 2em;
+  border-radius: 8px;
+  min-width: 300px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+  text-align: left;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content button {
+  margin-top: 1em;
+  padding: 0.5em 1em;
+  background: var(--primary-color);
+  color: var(--header-text-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background: var(--secondary-color);
+}
+
+/* for mobile viewing */
+@media (max-width: 500px) {
+  form {
+    max-width: 95%;
+    padding: 1em;
+  }
+  header {
+    font-size: 1.1em;
+    padding: 0.7em;
+  }
+  nav a {
+    margin: 0 0.5em;
+    font-size: 1em;
+  }
+}
