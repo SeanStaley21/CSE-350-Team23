@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import FoodTruckForm from './FoodTruckForm';
-import OrderManagement from './OrderManagement';
-import './default_style.css';
+import FoodTruckForm from './FoodTruckForm.jsx';
+import OrderManagement from './OrderManagement.jsx';
+import './FoodTruckForm.css';
 
 function App() {
   const [currentView, setCurrentView] = useState('order'); // 'order' or 'management'
