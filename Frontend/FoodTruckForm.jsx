@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './FoodTruckForm.css';
 
+// Store the next order number (in a real app, this would come from your backend)
+let nextOrderNumber = 100001;
+
 function FoodTruckForm() {
   const [form, setForm] = useState({
     food: '',
@@ -10,6 +13,7 @@ function FoodTruckForm() {
   });
   const [showPopup, setShowPopup] = useState(false);
   const [orderNumber, setOrderNumber] = useState(null);
+  const [submittedOrder, setSubmittedOrder] = useState(null);
 
   const handleChange = (e) => {
     setForm({
@@ -18,13 +22,65 @@ function FoodTruckForm() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Generate a random order number (for demo)
-    const number = Math.floor(100000 + Math.random() * 900000);
-    setOrderNumber(number);
-    setShowPopup(true);
-    // You can also send the order to your API here
+    
+    // Create order object without estimatedTime (API will calculate it)
+    const orderData = {
+      id: nextOrderNumber,
+      name: form.name,
+      food: form.food,
+      side: form.side,
+      drink: form.drink,
+      status: 'pending',
+      timestamp: new Date().toISOString()
+    };
+    
+    // Increment order number for next order
+    nextOrderNumber++;
+    
+    // Send to API to get estimated time and submit order
+    try {
+      const response = await fetch('/api/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData)
+      });
+      
+      if (response.ok) {
+        const submittedOrderWithTime = await response.json();
+        console.log('Order submitted successfully:', submittedOrderWithTime);
+        
+        // Use the order data returned from API (includes estimatedTime)
+        setSubmittedOrder(submittedOrderWithTime);
+        setOrderNumber(submittedOrderWithTime.id);
+        setShowPopup(true);
+      } else {
+        console.error('Failed to submit order');
+        // Fallback with default estimated time
+        const fallbackOrder = { ...orderData, estimatedTime: 10 };
+        setSubmittedOrder(fallbackOrder);
+        setOrderNumber(fallbackOrder.id);
+        setShowPopup(true);
+      }
+    } catch (error) {
+      console.log('API not available, using default estimated time:', orderData);
+      // In development, use default estimated time when API isn't available
+      const fallbackOrder = { ...orderData, estimatedTime: 10 };
+      setSubmittedOrder(fallbackOrder);
+      setOrderNumber(fallbackOrder.id);
+      setShowPopup(true);
+    }
+    
+    // Reset form
+    setForm({
+      food: '',
+      side: '',
+      drink: '',
+      name: ''
+    });
   };
 
   const closePopup = () => setShowPopup(false);
@@ -78,10 +134,11 @@ function FoodTruckForm() {
           }}>
             <h2>Order Submitted!</h2>
             <p><strong>Order Number:</strong> {orderNumber}</p>
-            <p><strong>Name:</strong> {form.name}</p>
-            <p><strong>Meal:</strong> {getDisplayText(form.food, 'food')}</p>
-            <p><strong>Side:</strong> {getDisplayText(form.side, 'side')}</p>
-            <p><strong>Drink:</strong> {form.drink}</p>
+            <p><strong>Name:</strong> {submittedOrder?.name}</p>
+            <p><strong>Meal:</strong> {getDisplayText(submittedOrder?.food, 'food')}</p>
+            <p><strong>Side:</strong> {getDisplayText(submittedOrder?.side, 'side')}</p>
+            <p><strong>Drink:</strong> {submittedOrder?.drink}</p>
+            <p><strong>Estimated Time:</strong> {submittedOrder?.estimatedTime} minutes</p>
             <button onClick={closePopup}>Close</button>
           </div>
         </div>
