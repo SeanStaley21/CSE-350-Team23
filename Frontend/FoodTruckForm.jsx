@@ -29,6 +29,12 @@ function FoodTruckForm() {
 
   const closePopup = () => setShowPopup(false);
 
+  const getDisplayText = (value, type) => {
+    if (type === 'side' && value === 'none') return 'No Side';
+    if (type === 'food' && value === 'hot_dog') return 'Hot Dog';
+    return value;
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -41,8 +47,7 @@ function FoodTruckForm() {
         </select>
 
         <label htmlFor="side">Choose your side:</label>
-        <select id="side" name="side" value={form.side} onChange={handleChange} required>
-          <option value="" disabled>Please Choose One</option>
+        <select id="side" name="side" value={form.side} onChange={handleChange}>
           <option value="none">No Side</option>
           <option value="fries">Fries</option>
           <option value="salad">Salad</option>
@@ -74,8 +79,8 @@ function FoodTruckForm() {
             <h2>Order Submitted!</h2>
             <p><strong>Order Number:</strong> {orderNumber}</p>
             <p><strong>Name:</strong> {form.name}</p>
-            <p><strong>Meal:</strong> {form.food}</p>
-            <p><strong>Side:</strong> {form.side}</p>
+            <p><strong>Meal:</strong> {getDisplayText(form.food, 'food')}</p>
+            <p><strong>Side:</strong> {getDisplayText(form.side, 'side')}</p>
             <p><strong>Drink:</strong> {form.drink}</p>
             <button onClick={closePopup}>Close</button>
           </div>
