@@ -1,0 +1,11 @@
+~~~starting server script~~~
+cd "c:\Users\Asalt\OneDrive - University of Louisville\semesters\UofL 2025\Fall 2025\CSE 350\CSE-350-Team23\CSE-350-Team23\Frontend"
+
+npm run dev
+
+
+~~~ending server Script~~~
+Get-Process -Name node | Stop-Process -Force
+
+~~~verify that it ended~~~
+Test-NetConnection -ComputerName localhost -Port 3000
