@@ -6,55 +6,105 @@ const OrderManagement = () => {
   const [filter, setFilter] = useState('all'); 
   const [editingOrder, setEditingOrder] = useState(null);
 
-  // Sample initial orders - replace with API call
+  // Fetch orders from API
   useEffect(() => {
-    const sampleOrders = [
-      {
-        id: 123456,
-        name: 'John Doe',
-        food: 'burger',
-        side: 'fries',
-        drink: 'soda',
-        status: 'pending',
-        timestamp: new Date().toISOString(),
-        estimatedTime: 15
-      },
-      {
-        id: 123457,
-        name: 'Jane Smith',
-        food: 'hot_dog',
-        side: 'salad',
-        drink: 'water',
-        status: 'preparing',
-        timestamp: new Date(Date.now() - 300000).toISOString(),
-        estimatedTime: 10
-      }
-    ];
-    setOrders(sampleOrders);
+    fetchOrders();
   }, []);
+
+  const fetchOrders = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/orders');
+      if (response.ok) {
+        const data = await response.json();
+        setOrders(data);
+      } else {
+        console.error('Failed to fetch orders');
+      }
+    } catch (error) {
+      console.error('Error fetching orders:', error);
+      // Use sample orders as fallback
+      const sampleOrders = [
+        {
+          id: 123456,
+          name: 'John Doe',
+          food: 'burger',
+          side: 'fries',
+          drink: 'soda',
+          status: 'pending',
+          timestamp: new Date().toISOString(),
+          estimatedTime: 15
+        }
+      ];
+      setOrders(sampleOrders);
+    }
+  };
 
   const statusOptions = ['pending', 'preparing', 'ready', 'completed'];
 
-  const updateOrderStatus = (orderId, newStatus) => {
-    setOrders(orders.map(order => 
-      order.id === orderId 
-        ? { ...order, status: newStatus }
-        : order
-    ));
+  const updateOrderStatus = async (orderId, newStatus) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/orders/${orderId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ status: newStatus })
+      });
+      
+      if (response.ok) {
+        setOrders(orders.map(order => 
+          order.id === orderId 
+            ? { ...order, status: newStatus }
+            : order
+        ));
+      } else {
+        console.error('Failed to update order status');
+      }
+    } catch (error) {
+      console.error('Error updating order:', error);
+    }
   };
 
-  const updateOrder = (orderId, updatedFields) => {
-    setOrders(orders.map(order => 
-      order.id === orderId 
-        ? { ...order, ...updatedFields }
-        : order
-    ));
-    setEditingOrder(null);
+  const updateOrder = async (orderId, updatedFields) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/orders/${orderId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedFields)
+      });
+      
+      if (response.ok) {
+        setOrders(orders.map(order => 
+          order.id === orderId 
+            ? { ...order, ...updatedFields }
+            : order
+        ));
+        setEditingOrder(null);
+      } else {
+        console.error('Failed to update order');
+      }
+    } catch (error) {
+      console.error('Error updating order:', error);
+    }
   };
 
-  const deleteOrder = (orderId) => {
+  const deleteOrder = async (orderId) => {
     if (window.confirm('Are you sure you want to delete this order?')) {
-      setOrders(orders.filter(order => order.id !== orderId));
+      try {
+        const response = await fetch(`http://localhost:5000/api/orders/${orderId}`, {
+          method: 'DELETE'
+        });
+        
+        if (response.ok) {
+          setOrders(orders.filter(order => order.id !== orderId));
+        } else {
+          console.error('Failed to delete order');
+        }
+      } catch (error) {
+        console.error('Error deleting order:', error);
+      }
     }
   };
 
